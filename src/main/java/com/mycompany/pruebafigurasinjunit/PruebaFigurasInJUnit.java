@@ -13,7 +13,7 @@ public class PruebaFigurasInJUnit {
         Scanner sc = new Scanner(System.in);
         System.out.println("Ingresar figura (rectangulo,triangulo):");
         String entrada = sc.nextLine();
-        switch (entrada.toString().trim()) {
+        switch (entrada.toString().trim().toUpperCase()) {
             case "RECTANGULO":
                 while (true) {
                     System.out.println("Ingresar ancho del rectangulo :");
@@ -44,38 +44,43 @@ public class PruebaFigurasInJUnit {
 
                 System.out.println("Ingresar el tipo de triangulo :");
                 entrada = sc.nextLine();
-                if (entrada.toUpperCase() == "ISOSCELES") {
-                    System.out.println("Ingresar lados iguales : ");
-                    entrada1 = Double.parseDouble(sc.nextLine());
-                    triangulo tri = new triangulo(entrada, entrada1, 0, 0);
-                    System.out.println("El area del triangulo es :" + tri.area() +
-                            "\nEl perimetro del triangulo es :" + tri.perimetro());
-                    break;
-                } else if (entrada.toUpperCase() == "EQUILATERO") {
-                    System.out.println("Ingresar longitud de los lados : ");
-                    entrada1 = Double.parseDouble(sc.nextLine());
-                    triangulo tri = new triangulo(entrada, entrada1, 0, 0);
-                    System.out.println("El area del triangulo es :" + tri.area() + "\nEl perimetro del triangulo es :" + tri.perimetro());
-                    break;      
-                } else if (entrada.toUpperCase() == "ESCALENO") {
-                    //escaleno
-                    System.out.println("Ingresar longitud base : ");
-                    entrada1 = Double.parseDouble(sc.nextLine());
-                    System.out.println("Ingresar longitud altura : ");
-                    entrada2 = Double.parseDouble(sc.nextLine());
-                    System.out.println("Ingresar longitud hipotenusa : ");
-                    entrada3 = Double.parseDouble(sc.nextLine());
-                    triangulo tri = new triangulo(entrada, entrada1, entrada2, entrada3);
-                    System.out.println("El area del triangulo es :" + tri.area() + "\nEl perimetro del triangulo es :" + tri.perimetro());
-                    break;
-                } else {
-                    System.out.println("No se reconoce el tipo de triangulo ingresado");
-                    break;
+                switch (entrada.toUpperCase().trim()) {
+                    case "ISOSCELES":
+                        System.out.println("Ingresar longitud de lados iguales : ");
+                        entrada1 = Double.parseDouble(sc.nextLine());
+                        entrada2 = entrada1;
+                        System.out.println("Ingresar longitud del terccer lado : ");
+                        entrada3 = Double.parseDouble(sc.nextLine());
+                        triangulo trian = new triangulo(entrada, entrada1, entrada2, entrada3);
+                        System.out.println("El area del triangulo es :" + trian.area() + "\nEl perimetro del triangulo es :" + trian.perimetro());
+                        break;
+                    case "EQUILATERO":
+                        System.out.println("Ingresar longitud de los lados : ");
+                        entrada1 = Double.parseDouble(sc.nextLine());
+                        entrada2 = entrada1;
+                        entrada3 = entrada1;
+                        triangulo tria = new triangulo(entrada, entrada1, entrada2, entrada3);
+                        System.out.println("El area del triangulo es :" + tria.area() + "\nEl perimetro del triangulo es :" + tria.perimetro());
+                        break;
+                    case "ESCALENO":
+                        //escaleno
+                        System.out.println("Ingresar longitud base : ");
+                        entrada1 = Double.parseDouble(sc.nextLine());
+                        System.out.println("Ingresar longitud altura : ");
+                        entrada2 = Double.parseDouble(sc.nextLine());
+                        System.out.println("Ingresar longitud hipotenusa : ");
+                        entrada3 = Double.parseDouble(sc.nextLine());
+                        triangulo tri = new triangulo(entrada, entrada1, entrada2, entrada3);
+                        System.out.println("El area del triangulo es :" + tri.area() + "\nEl perimetro del triangulo es :" + tri.perimetro());
+                        break;
+                    default:
+                        System.out.println("No se reconoce el tipo de triangulo ingresado");
+                        break;
                 }
+                break;
             default:
                 System.out.println("Ingreso una figura no valida");
                 break;
-
         }
     }
 }
