@@ -7,6 +7,14 @@ public class triangulo {
 
     public triangulo() {
     }
+
+    public triangulo(String tipo, double base, double altura, double l3) {
+        this.tipo = tipo;
+        this.base = base;
+        this.altura = altura;
+        this.l3 = l3;
+    }
+    
     
     
     

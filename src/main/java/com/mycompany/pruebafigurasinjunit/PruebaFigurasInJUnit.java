@@ -12,7 +12,7 @@ import java.util.List;
 public class PruebaFigurasInJUnit {
 
     public static void main(String[] args) {
-        double entrada1, entrada2,entrada3;
+        double entrada1, entrada2, entrada3;
         System.out.println("Prueba Unitaria con JUnit");
         Scanner sc = new Scanner(System.in);
         System.out.println("Ingresar figura (rectangulo,triangulo):");
@@ -28,6 +28,7 @@ public class PruebaFigurasInJUnit {
                     break;
                 }
             }
+            
             while (true) {
                 System.out.println("Ingresar alto del rectangulo :");
                 entrada2 = Double.parseDouble(sc.nextLine());
@@ -37,6 +38,7 @@ public class PruebaFigurasInJUnit {
                     break;
                 }
             }
+            
             Rectangulo rec = new Rectangulo(entrada1, entrada2);
             System.out.println("El area del rectangulo es : " + rec.area()
                     + " El perimetro del rectangulo es : " + rec.perimetro());
@@ -45,27 +47,34 @@ public class PruebaFigurasInJUnit {
 
             System.out.println("Ingresar el tipo de triangulo :");
             entrada = sc.nextLine();
-            List<String> tiposTri = new ArrayList<String>();
-            tiposTri.add("ISOSCELES");
-            tiposTri.add("EQUILATERO");
-            tiposTri.add("ESCALENO");
-            if (tiposTri.contains(entrada)) {
-                if (entrada == "ISOSCELES") {
-                    System.out.println("Ingresar lados iguales : ");
-                    entrada1 =Double.parseDouble(sc.nextLine());
-                } else if (entrada == "EQUILATERO") {
-                    System.out.println("Ingresar longitud de los lados : ");
-                    entrada2 =Double.parseDouble(sc.nextLine());
-                } else {
-                    System.out.println("Ingresar longitud base : ");
-                    entrada2 =Double.parseDouble(sc.nextLine());
-                }
-                System.out.println("Ingresar la base del triangulo : ");
+            if (entrada.toUpperCase() == "ISOSCELES") {
+                System.out.println("Ingresar lados iguales : ");
+                entrada1 = Double.parseDouble(sc.nextLine());
+                triangulo tri = new triangulo(entrada, entrada1, 0, 0);
+                System.out.println("El area del triangulo es :" + tri.area()+"\nEl perimetro del triangulo es :"+tri.perimetro());
+            } else if (entrada.toUpperCase() == "EQUILATERO") {
+                System.out.println("Ingresar longitud de los lados : ");
+                entrada1 = Double.parseDouble(sc.nextLine());
+                triangulo tri = new triangulo(entrada, entrada1, 0, 0);
+                System.out.println("El area del triangulo es :" + tri.area()+"\nEl perimetro del triangulo es :"+tri.perimetro());
+            } else if(entrada.toUpperCase() == "ESCALENO"){
+                //escaleno
+                System.out.println("Ingresar longitud base : ");
+                entrada1 = Double.parseDouble(sc.nextLine());
+                System.out.println("Ingresar longitud altura : ");
+                entrada2 = Double.parseDouble(sc.nextLine());
+                System.out.println("Ingresar longitud hipotenusa : ");
+                entrada3 = Double.parseDouble(sc.nextLine());
+                triangulo tri = new triangulo(entrada, entrada1, entrada2, entrada3);
+                System.out.println("El area del triangulo es :" + tri.area()+"\nEl perimetro del triangulo es :"+tri.perimetro());
             }
-        }
-        else{
+            else{
+                System.out.println("No se reconoce el tipo de triangulo ingresado");
+            }
+        } else {
             System.out.println("Ingreso una figura no valida");
         }
 
     }
 }
+
