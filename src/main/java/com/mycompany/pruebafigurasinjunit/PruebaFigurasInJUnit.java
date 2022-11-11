@@ -9,20 +9,16 @@ import com.mycompany.pruebafigurasinjunit.Rectangulo;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author Sebas
- */
 public class PruebaFigurasInJUnit {
 
     public static void main(String[] args) {
+        double entrada1, entrada2,entrada3;
         System.out.println("Prueba Unitaria con JUnit");
         Scanner sc = new Scanner(System.in);
-        System.out.println("Ingresar figura :");
+        System.out.println("Ingresar figura (rectangulo,triangulo):");
         String entrada = sc.nextLine();
-        double entrada1, entrada2,entrada3;
 
-        if (entrada.toUpperCase() == "RECTANGULO") {
+        if (entrada.toString().trim() == "RECTANGULO") {
             while (true) {
                 System.out.println("Ingresar ancho del rectangulo :");
                 entrada1 = Double.parseDouble(sc.nextLine());
@@ -45,7 +41,7 @@ public class PruebaFigurasInJUnit {
             System.out.println("El area del rectangulo es : " + rec.area()
                     + " El perimetro del rectangulo es : " + rec.perimetro());
 
-        } else if (entrada.toUpperCase() == "TRIANGULO") {
+        } else if (entrada.toString().trim() == "TRIANGULO") {
 
             System.out.println("Ingresar el tipo de triangulo :");
             entrada = sc.nextLine();
@@ -66,6 +62,9 @@ public class PruebaFigurasInJUnit {
                 }
                 System.out.println("Ingresar la base del triangulo : ");
             }
+        }
+        else{
+            System.out.println("Ingreso una figura no valida");
         }
 
     }
